@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -49,8 +50,13 @@ namespace Market.Models
         [DataType(DataType.Url)]
         public string URL { get; set; }
 
+
+
         [Required(ErrorMessage = "Ingrese por favor el {0}")]
         public int DocumentTypeID { get; set; }
+
+        [NotMapped]
+        public int Age { get { return DateTime.Now.Year - DateOfBirth.Year;}  }
 
         public virtual DocumentType DocumentType { get; set; }
 

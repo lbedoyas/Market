@@ -111,7 +111,16 @@ namespace Market.Controllers
         {
             DocumentType documentType = db.DocumentTypes.Find(id);
             db.DocumentTypes.Remove(documentType);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                
+            }
+            
             return RedirectToAction("Index");
         }
 

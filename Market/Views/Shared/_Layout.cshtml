@@ -26,6 +26,7 @@
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             File
@@ -37,8 +38,18 @@
                             <li>@Html.ActionLink("Products", "Index", "Products")</li>
                             <li>@Html.ActionLink("Suppliers", "Index", "Suppliers")</li>
                         </ul>
-                        </li>
-                    </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Operations
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li>@Html.ActionLink("Orders", "NewOrder", "Orders")</li>
+                           
+                        </ul>
+                    </li>
+                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

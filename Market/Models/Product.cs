@@ -37,5 +37,7 @@ namespace Market.Models
         public string Remarks { get; set; }
 
         public virtual ICollection<SupplierProduct> SupplierProducts  { get; set; }
+
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

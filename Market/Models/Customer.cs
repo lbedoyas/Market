@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -35,6 +36,9 @@ namespace Market.Models
 
 
         public int DocumentTypeID { get; set; }
+
+        [NotMapped]
+        public string FullName { get { return string.Format("{0} {1}", FirstName, LastName); } }
 
         public virtual DocumentType DocumentType { get; set; }
 

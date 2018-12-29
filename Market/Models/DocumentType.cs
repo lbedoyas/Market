@@ -14,6 +14,8 @@ namespace Market.Models
         [Display(Name = "Documento")]
         public string Description { get; set; }
 
-        public ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
+
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

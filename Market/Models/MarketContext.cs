@@ -32,5 +32,7 @@ namespace Market.Models
         public System.Data.Entity.DbSet<Market.Models.Employee> Employees { get; set; }
 
         public System.Data.Entity.DbSet<Market.Models.Supplier> Suppliers { get; set; }
+
+        public System.Data.Entity.DbSet<Market.Models.Customer> Customers { get; set; }
     }
 }

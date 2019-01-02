@@ -174,7 +174,6 @@ C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Diagnostics.File
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Diagnostics.Process.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Diagnostics.StackTrace.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.IO.Compression.dll
-C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.IO.Pipes.dll
@@ -183,7 +182,6 @@ C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Security.AccessC
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Security.Claims.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Security.Cryptography.Algorithms.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Security.Cryptography.Primitives.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Security.Principal.Windows.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Text.Encoding.CodePages.dll
@@ -289,8 +287,10 @@ C:\Users\lucho\Documents\GitHub\Market\Market\bin\es\Microsoft.Owin.Security.Fac
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\es\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\lucho\Documents\GitHub\Market\Market\obj\Debug\Market.csprojAssemblyReference.cache
 C:\Users\lucho\Documents\GitHub\Market\Market\obj\Debug\Market.csproj.CoreCompileInputs.cache
 C:\Users\lucho\Documents\GitHub\Market\Market\obj\Debug\Market.csproj.CopyComplete
 C:\Users\lucho\Documents\GitHub\Market\Market\obj\Debug\Market.dll
 C:\Users\lucho\Documents\GitHub\Market\Market\obj\Debug\Market.pdb
+C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\lucho\Documents\GitHub\Market\Market\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\lucho\Documents\GitHub\Market\Market\obj\Debug\Market.csprojAssemblyReference.cache

@@ -20,6 +20,7 @@ namespace Market.Controllers
             orderView.Products = new List<ProductOrder>();
 
             var lista = db.Customers.ToList();
+            lista.Add(new Customer { CustomerId = 0, FirstName = "[Seleccion un cliente ... ]"} );
             lista = lista.OrderBy(c => c.FullName).ToList();
             ViewBag.CustomerId = new SelectList(lista, "CustomerId", "FullName");            
             return View(orderView);
@@ -30,15 +31,34 @@ namespace Market.Controllers
         {
             var lista = db.Customers.ToList();
             lista = lista.OrderBy(c => c.FullName).ToList();
+            lista.Add(new Customer { CustomerId = 0, FirstName = "[Seleccion un cliente ... ]" });
             ViewBag.CustomerId = new SelectList(lista, "CustomerId", "FullName");
             return View(orderView);
         }
 
         public ActionResult AddProduct(ProductOrder productOrder)
         {
+            var lista = db.Products.ToList();
+            lista.Add(new ProductOrder { ProductID = 0, Description = "[Seleccione un producto...] " });
+            lista = lista.OrderBy(p => p.Description).ToList();
+            ViewBag.ProductID = new SelectList(lista, "ProductID", "Description");
+
             return View(productOrder);
         }
 
+        [HttpPost]
+        public ActionResult AddProduct(FormCollection form)
+        {
+            var lista = db.Products.ToList();
+            lista.Add(new ProductOrder { ProductID = 0, Description = "[Seleccione un producto...] " });
+            lista = lista.OrderBy(p => p.Description).ToList();
+            ViewBag.ProductID = new SelectList(lista, "ProductID", "Description");
+
+            return View();
+        }
+
+
+        //Hacemos la liberacion del recurso para cerrar la BD y no tener conexiones abiertas
         protected override void Dispose(bool disposing)
         {
             if (disposing)

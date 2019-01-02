@@ -31,11 +31,80 @@ namespace Market.Controllers
         public ActionResult NewOrder(OrderView orderView)
         {
 
+            orderView = Session["orderView"] as OrderView;
+
+            var customerID = int.Parse(Request["CustomerID"]);
+            if (customerID == 0)
+            {
+                var lista = db.Customers.ToList();
+                lista.Add(new Customer { CustomerId = 0, FirstName = "[Seleccion un cliente ... ]" });
+                lista = lista.OrderBy(c => c.FullName).ToList();
+                ViewBag.CustomerId = new SelectList(lista, "CustomerId", "FullName");
+                ViewBag.Error = "Debe seleccionar un cliente";
+                return View(orderView);
+            }
+
+            //Este campo es para validar si el cliente si existe 
+            var customer = db.Customers.Find(customerID);
+            if (customer == null)
+            {
+                var lista = db.Customers.ToList();
+                lista.Add(new Customer { CustomerId = 0, FirstName = "[Seleccion un cliente ... ]" });
+                lista = lista.OrderBy(c => c.FullName).ToList();
+                ViewBag.CustomerId = new SelectList(lista, "CustomerId", "FullName");
+                ViewBag.Error = "El cliente no existe";
+                return View(orderView);
+            }
+
+            if(orderView.Products.Count == 0)
+            {
+                var lista = db.Customers.ToList();
+                lista.Add(new Customer { CustomerId = 0, FirstName = "[Seleccion un cliente ... ]" });
+                lista = lista.OrderBy(c => c.FullName).ToList();
+                ViewBag.CustomerId = new SelectList(lista, "CustomerId", "FullName");
+                ViewBag.Error = "Debe ingresar detalle";
+                return View(orderView);
+            }
             
-            var lista = db.Customers.ToList();
-            lista = lista.OrderBy(c => c.FullName).ToList();
-            lista.Add(new Customer { CustomerId = 0, FirstName = "[Seleccion un cliente ... ]" });
-            ViewBag.CustomerId = new SelectList(lista, "CustomerId", "FullName");
+            //Ingresar a BD
+            var order = new Order{
+                CustomerId = customerID,
+                DateOrder = DateTime.Now,
+                OrderStatus =OrderStatus.Created
+            };
+
+            db.Orders.Add(order);
+            db.SaveChanges();
+
+            var orderID = db.Orders.ToList().Select(o => o.OrderId).Max();
+
+            foreach (var item in orderView.Products)
+            {
+                var orderDetail = new OrderDetail
+                {
+                    ProductID = item.ProductID,
+                    Description = item.Description,
+                    Price = item.Price,
+                    Quantity = item.Quantity,
+                    OrderId = orderID
+                };
+
+                db.orderDetails.Add(orderDetail);
+                db.SaveChanges();
+            }
+            
+
+            ViewBag.Message = string.Format("La orden: {0}, grabada ok", orderID);
+
+            var listaC = db.Customers.ToList();
+            listaC.Add(new Customer { CustomerId = 0, FirstName = "[Seleccion un cliente ... ]" });
+            listaC = listaC.OrderBy(c => c.FullName).ToList();
+            ViewBag.CustomerId = new SelectList(listaC, "CustomerId", "FullName");
+
+            orderView = new OrderView();
+            orderView.Customer = new Customer();
+            orderView.Products = new List<ProductOrder>();
+            Session["orderView"] = orderView;
             return View(orderView);
         }
 

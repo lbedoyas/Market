@@ -34,5 +34,9 @@ namespace Market.Models
         public System.Data.Entity.DbSet<Market.Models.Supplier> Suppliers { get; set; }
 
         public System.Data.Entity.DbSet<Market.Models.Customer> Customers { get; set; }
+
+        public System.Data.Entity.DbSet<Market.Models.Order> Orders { get; set; }
+
+        public System.Data.Entity.DbSet<Market.Models.OrderDetail> orderDetails { get; set; }
     }
 }

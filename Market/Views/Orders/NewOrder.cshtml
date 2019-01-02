@@ -27,3 +27,49 @@
 </div>
 }
 
+
+<h2>Order Details</h2>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Value)
+        </th>
+        <th></th>
+    </tr>
+
+    @for  (int i = 0; i < Model.Products.Count; i++)
+    {  
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Products[i].Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Products[i].Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Products[i].Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Products[i].Value)
+            </td>
+           
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Products[i].ProductID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = Model.Products[i].ProductID })
+            </td>
+        </tr>
+    }
+
+</table>
+

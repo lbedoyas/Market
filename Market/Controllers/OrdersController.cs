@@ -65,34 +65,58 @@ namespace Market.Controllers
                 ViewBag.Error = "Debe ingresar detalle";
                 return View(orderView);
             }
-            
-            //Ingresar a BD
-            var order = new Order{
-                CustomerId = customerID,
-                DateOrder = DateTime.Now,
-                OrderStatus =OrderStatus.Created
-            };
 
-            db.Orders.Add(order);
-            db.SaveChanges();
+            var orderID = 0;
 
-            var orderID = db.Orders.ToList().Select(o => o.OrderId).Max();
-
-            foreach (var item in orderView.Products)
+            using (var transaction = db.Database.BeginTransaction())
             {
-                var orderDetail = new OrderDetail
-                {
-                    ProductID = item.ProductID,
-                    Description = item.Description,
-                    Price = item.Price,
-                    Quantity = item.Quantity,
-                    OrderId = orderID
-                };
 
-                db.orderDetails.Add(orderDetail);
-                db.SaveChanges();
+                try
+                {
+
+
+                    //Ingresar a BD
+                    var order = new Order
+                    {
+                        CustomerId = customerID,
+                        DateOrder = DateTime.Now,
+                        OrderStatus = OrderStatus.Created
+                    };
+
+                    db.Orders.Add(order);
+                    db.SaveChanges();
+
+                    orderID = db.Orders.ToList().Select(o => o.OrderId).Max();
+
+                    foreach (var item in orderView.Products)
+                    {
+                        var orderDetail = new OrderDetail
+                        {
+                            ProductID = item.ProductID,
+                            Description = item.Description,
+                            Price = item.Price,
+                            Quantity = item.Quantity,
+                            OrderId = orderID
+                        };
+
+                        db.orderDetails.Add(orderDetail);
+                        db.SaveChanges();
+                    }
+
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+
+                    transaction.Rollback();
+                    ViewBag.Error = "Error: " + ex.Message;
+                    return View(orderView);
+                }
+
+                
+
+
             }
-            
 
             ViewBag.Message = string.Format("La orden: {0}, grabada ok", orderID);
 

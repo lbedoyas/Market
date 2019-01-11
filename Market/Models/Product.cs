@@ -16,6 +16,7 @@ namespace Market.Models
         [Required(ErrorMessage ="Por favor ingresar el campo {0}")]
         public string Description { get; set; }
 
+        [Display(Name = "Precio")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}" , ApplyFormatInEditMode = false)]
         [Required(ErrorMessage ="Por favor ingresar el valor en el campo {0}")]
@@ -33,6 +34,7 @@ namespace Market.Models
         [DisplayFormat(DataFormatString = "{0:N2}" ,ApplyFormatInEditMode = false)]
         public float Stock { get; set; }
 
+        [Display(Name = "Observaciones")]
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
 

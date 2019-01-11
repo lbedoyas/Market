@@ -10,17 +10,20 @@ using Market.Models;
 
 namespace Market.Controllers
 {
+    
     public class ProductsController : Controller
     {
         private MarketContext db = new MarketContext();
 
         // GET: Products
+        [Authorize(Roles = "View")]
         public ActionResult Index()
         {
             return View(db.Products.ToList());
         }
 
         // GET: Products/Details/5
+        [Authorize(Roles = "View")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,7 +38,9 @@ namespace Market.Controllers
             return View(product);
         }
 
+        [Authorize]
         // GET: Products/Create
+        [Authorize(Roles = "Create")]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +64,7 @@ namespace Market.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize(Roles = "Edit")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +96,7 @@ namespace Market.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "Delete")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

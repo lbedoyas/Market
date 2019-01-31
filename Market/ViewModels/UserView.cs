@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Market.Models
+namespace Market.ViewModels
 {
     public class UserView
     {

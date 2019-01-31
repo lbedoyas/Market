@@ -20,10 +20,12 @@ namespace Market
         protected void Application_Start()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<Models.MarketContext, Migrations.Configuration>());
+            // Conectamos a la BD -> Me conecto al contexto generico porque en el webconfig tenemos dos string de conexion
             ApplicationDbContext db = new ApplicationDbContext();
             CreateRoles(db);
             CreateSuperUser(db);
             AddPermisionToSuperuser(db);
+            // Cerramos conexion a la BD
             db.Dispose();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -76,6 +78,7 @@ namespace Market
             }
         }
 
+        // Aca creamos los roles
         private void CreateRoles(ApplicationDbContext db)
         {
             var roleManager =new  RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));

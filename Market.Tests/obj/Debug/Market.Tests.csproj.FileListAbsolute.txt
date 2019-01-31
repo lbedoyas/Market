@@ -156,3 +156,6 @@ C:\Users\lucho\Documents\GitHub\Market\Market.Tests\obj\Debug\Market.Tests.cspro
 C:\Users\lucho\Documents\GitHub\Market\Market.Tests\obj\Debug\Market.Tests.csproj.CopyComplete
 C:\Users\lucho\Documents\GitHub\Market\Market.Tests\obj\Debug\Market.Tests.dll
 C:\Users\lucho\Documents\GitHub\Market\Market.Tests\obj\Debug\Market.Tests.pdb
+C:\Users\lucho\Documents\GitHub\Market\Market.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.dll
+C:\Users\lucho\Documents\GitHub\Market\Market.Tests\bin\Debug\Microsoft.Owin.Security.Facebook.xml
+C:\Users\lucho\Documents\GitHub\Market\Market.Tests\bin\Debug\es\Microsoft.Owin.Security.Facebook.resources.dll

@@ -35,6 +35,50 @@ namespace Market.Controllers
             return View(usersView);
         }
 
+
+        public ActionResult Roles(string userID)
+        {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+
+            var roles = roleManager.Roles.ToList();
+            // Listado de usuarios
+            var users = userManager.Users.ToList();
+            var user = users.Find(u => u.Id == userID);
+
+            var rolesView = new List<RoleView>();
+            if (user.Roles != null)
+            {
+                
+                foreach (var item in user.Roles)
+                {
+                    var role = roles.Find(r => r.Id == item.RoleId);
+
+                    var roleView = new RoleView
+                    {
+                        RoleID = role.Id,
+                        Name = role.Name
+                    
+                    };
+
+                    rolesView.Add(roleView);
+                }
+            }
+
+            var userView = new UserView
+            {
+                Email = user.Email,
+                Name = user.UserName,
+                UserID = user.Id,
+                Roles = new List<RoleView>()
+            };
+
+            return View(userView);
+        }
+
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
